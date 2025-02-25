@@ -1,0 +1,13 @@
+import csv
+import json
+
+csv_file = "bao_tang_ha_noi_khong_dau.csv"
+jsonl_file = "baotang.jsonl"
+
+with open(csv_file, "r", encoding="utf-8") as f_csv, open(jsonl_file, "w", encoding="utf-8") as f_jsonl:
+    reader = csv.DictReader(f_csv)
+    for row in reader:
+        json.dump(row, f_jsonl, ensure_ascii=False)
+        f_jsonl.write("\n")
+
+print("Chuyển đổi CSV -> JSONL thành công!")
